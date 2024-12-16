@@ -1,0 +1,9 @@
+services:
+  xss_demo:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: xss_demo_image:latest
+    container_name: xss_demo_container
+    ports:
+      - 81:8080 # localport:dockerport
