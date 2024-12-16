@@ -27,7 +27,8 @@
 
           // 折り返す
           const output = document.getElementById("output");
-          output.innerHTML = "Hello, " + escapeHtml(input) + "!";
+          // output.innerHTML = "Hello, " + escapeHtml(input) + "!"; // XSS修正
+          output.innerHTML = "Hello, " + input + "!";
         });
       });
     </script>
