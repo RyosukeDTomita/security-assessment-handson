@@ -1,5 +1,7 @@
 # XSS DEMO
 
+![un license](https://img.shields.io/github/license/RyosukeDTomita/security-assessment-handson)
+
 ## HOW TO USE
 
 1. run docker container
