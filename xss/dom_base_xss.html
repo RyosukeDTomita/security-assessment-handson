@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerable XSS Example</title>
+    <script>
+      // 追加
+      function escapeHtml(unsafe) {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+      /**
+       * XSSを試すためにフォームに入力された文字列をそのまま出力する
+       */ 
+      document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+          event.preventDefault(); // NOTE: formがsubmitされないようにすることで折返しの文字列がすぐに消えないようにする
+
+          // Formのinput要素から値を取得する
+          const input = document.getElementById("input").value;
+
+          // 折り返す
+          const output = document.getElementById("output");
+          output.innerHTML = "Hello, " + escapeHtml(input) + "!";
+        });
+      });
+    </script>
+</head>
+<body>
+    <h1>Vulnerable XSS Example</h1>
+    <form action="" method="GET">
+        <label for="input">Enter your name:</label>
+        <input type="text" id="input" name="name">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="output">
+    </div>
+</body>
+</html>

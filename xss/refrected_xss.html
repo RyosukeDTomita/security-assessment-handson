@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch and Display Response</title>
+</head>
+<body>
+    <h1>Refrected XSS </h1>
+    <pre id="response-output">Loading...</pre>
+
+    <script>
+        // Fetchリクエストを送信
+        fetch("https://httpbin.org/anything", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // body: JSON.stringify({ key: "<s>xss</s>" }),
+            body: JSON.stringify({ key: "<img src=x onerror=alert('xss')>" }),
+        })
+            .then((response) => response.json()) // レスポンスをJSONとして解析
+            .then((data) => {
+                // レスポンスを画面に表示
+                const output = document.getElementById("response-output");
+                output.innerHTML = JSON.stringify(data, null, 4); // 整形して表示
+            })
+            .catch((error) => {
+                // エラーメッセージを画面に表示
+                const output = document.getElementById("response-output");
+                output.innerHTML = "Error";
+            });
+    </script>
+</body>
+</html>
+
