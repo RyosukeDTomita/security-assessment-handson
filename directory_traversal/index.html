@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nginx demo env</title>
+</head>
+<body>
+<h1>demo site nginx alias traversal</h1>
+<ul>
+    <li>
+        <a href="http://localhost:82/good/cat.png">http://localhost/good/cat.png</a> is correct nginx.conf settings. You can see space cat png image.
+        <br>
+        <blockquote>
+        location /good/ {
+            alias /var/img/;
+        }
+        </blockquote>
+    </li>
+    <li>
+        <a href="http://localhost:82/bad../log/nginx/access.log_sample">http://localhost/bad../log/nginx/access.log_sample</a> is vulnerable to path traversal. Because the nginx.conf settings is not correct. You can try this link to get the access.log.sample.
+        <br>
+        <blockquote>
+        location <font color="red">/bad</font> {
+            alias /var/img/;
+        }
+        </blockquote>
+    </li>
+</ul>
+<a href=""></a>
+    
+</body>
+</html>

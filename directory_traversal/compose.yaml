@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  directory_traversal_app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: directory_traversal-img
+    container_name: directory_traversal_container
+    ports:
+      - 82:8080 # localport:dockerport
