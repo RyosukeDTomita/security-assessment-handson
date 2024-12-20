@@ -1,0 +1,28 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: user_info
+      TZ: "Asia/Tokyo"
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - 3307:3306 # localport:dockerport
+
+  sqli_demo_app:
+    build:
+      context: ./flask_app
+      dockerfile: Dockerfile
+    image: flask-app:latest
+    container_name: sqli_demo_container
+    volumes:
+        - ./flask_app/:/usr/local/flask_app
+    ports:
+      - 8000:8000 # localport:dockerport
+      # NOTE: flaskはデフォルトでは127.0.0.1のみからのアクセスをlistenしているので全IPアドレスをlistenするように0.0.0.0を指定している。
+      # NOTE: gunicornは実行時にapp.run()があるファイルパス:Flaskのオブジェクト名を指定する。
+    command: /usr/local/bin/gunicorn run:app -b 0.0.0.0:8000 --chdir /usr/local/flask_app/
+
