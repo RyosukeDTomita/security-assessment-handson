@@ -57,7 +57,14 @@ docker compose up
 
 ## HOW TO USE
 
-After the Docker container run, go to [localhost](http://localhost:81).
+After the Docker container run, go to [localhost:82](http://localhost:82).
+![start](./assets/start.png)
+
+1. http://localhost/good/cat.png is correct nginx.conf settings. You can see the image file.
+![good-settings](./assets/good-settings.png)
+2. http://localhost:82/bad../log/nginx/access.log_sample is vulnerable. You can get access.log_sample
+![success](./assets/success.png)
+
 
 ---
 
