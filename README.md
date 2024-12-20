@@ -22,8 +22,9 @@
 
 ## ABOUT
 
-- [xss](./xss/)
+- [XSS](./xss/)
 - [directory traversal](./directory_traversal/)
+- [SQL Injection](./sqli/)
 
 ---
 
