@@ -20,13 +20,15 @@ docker compose up
 
 Go to [http://localhost:8080/list/](http://localhost:8080/list/)
 
-### OpenResty Version is exposed from Error Screen
+![directory listing](./assets/directory_listing.png)
+
+### Version information is exposed from Error Screen
 
 Go to [http://localhost:8080/hoge](http://localhost:8080/hoge)
 
 ![404 error](./assets/404error.png)
 
-### OpenResty Version is exposed from Server Header
+### Version information is exposed from Server Header
 
 You can see `Server: openresty/1.21.4.1`
 
@@ -44,3 +46,7 @@ curl -v http://localhost:8080 2>&1 | grep '< '
 < Accept-Ranges: bytes
 ```
 
+### Path information exposed by robots.txt (Just for your information)
+
+Go to [http://localhost:8080/robots.txt](http://localhost:8080/robots.txt) and you can find `admin.html`
+![robots.txt](./assets/robots.png)
