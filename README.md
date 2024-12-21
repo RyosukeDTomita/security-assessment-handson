@@ -22,6 +22,7 @@
 
 ## ABOUT
 
+- [Vulnerable Server Settings Example](./vulnerable_server_settings/)
 - [XSS](./xss/)
 - [directory traversal](./directory_traversal/)
 - [SQL Injection](./sqli/)

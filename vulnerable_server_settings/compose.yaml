@@ -1,0 +1,9 @@
+services:
+  vulnerable_server_demo:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: vulnerable_server_image:latest
+    container_name: vulnerable_server_container
+    ports:
+      - 8080:8080 # localport:dockerport
