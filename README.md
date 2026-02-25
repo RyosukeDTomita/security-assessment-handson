@@ -1,6 +1,6 @@
 # SECURITY ASSESSMENT HANDSON
 
-![un license](https://img.shields.io/github/license/RyosukeDTomita/security-assessment-handson)
+![MIT license](https://img.shields.io/github/license/RyosukeDTomita/security-assessment-handson)
 
 - わざと脆弱なコードを作り，脆弱性の仕組みを理解するためのリポジトリ
 - 脆弱性ごとにコードを分けることで読みやすくした。
@@ -29,3 +29,8 @@
 
 ---
 
+## LICENSE
+
+- This project is licensed under the [MIT License](./LICENSE).
+
+---
